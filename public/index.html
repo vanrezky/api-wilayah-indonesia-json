@@ -1,73 +1,317 @@
 <!doctype html>
+<!--
+  Direction contract
+  THESIS: Make the API feel like a well-kept field journal, not a generic SaaS dashboard.
+  OWN-WORLD: Warm parchment, black ink, serif editorial headings, mono UI, hairline borders,
+  pill controls, and one Lake Blue action supported by quiet pastel washes.
+  STORY: Visitors see the hierarchy, try a real endpoint, then find the complete reference.
+  FIRST VIEWPORT: Editorial hero at left, live data pipeline at right, primary action below.
+  FORM: Monad editorial tech journal; the user-pinned direction, built without extra dependencies.
+-->
 <html lang="id">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="API Wilayah Indonesia berbasis JSON statis untuk provinsi, kabupaten/kota, kecamatan, dan desa/kelurahan." />
-  <title>API Wilayah Indonesia</title>
+  <title>API Wilayah Indonesia — WILAYAH.ID</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <main class="shell">
-    <nav class="nav">
-      <a class="brand" href="./">WILAYAH.ID</a>
-      <a href="https://github.com/vanrezky/api-wilayah-indonesia-json">GitHub ↗</a>
-    </nav>
+  <div class="announcement" role="status">
+    <div class="page-width announcement-inner">
+      <p><span class="announcement-mark" aria-hidden="true">+</span> JSON statis untuk data wilayah Indonesia.</p>
+      <div class="announcement-actions">
+        <a class="announcement-link" href="#docs">Baca docs <span aria-hidden="true">→</span></a>
+        <button class="close-button" type="button" data-dismiss-announcement aria-label="Tutup pengumuman">×</button>
+      </div>
+    </div>
+  </div>
 
-    <section class="hero">
-      <p class="eyebrow">STATIC JSON API · NO AUTH · NO DATABASE</p>
-      <h1>Data wilayah Indonesia,<br /><span>tanpa seed ulang.</span></h1>
-      <p class="lead">Provinsi, kabupaten/kota, kecamatan, dan desa/kelurahan yang bisa langsung dikonsumsi dari aplikasi Anda.</p>
-      <div class="curl"><code id="hero-url">GET ./api/v1/provinces.json</code><button data-copy="#hero-url">Copy</button></div>
-      <div id="stats" class="stats" aria-live="polite"></div>
-    </section>
-
-    <section class="panel" id="playground">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">API PLAYGROUND</p>
-          <h2>Coba endpoint langsung</h2>
+  <header class="site-header">
+    <div class="page-width">
+      <nav class="nav" aria-label="Navigasi utama">
+        <a class="brand" href="#top" aria-label="WILAYAH.ID beranda">
+          <span class="brand-symbol" aria-hidden="true">/</span>
+          <span>WILAYAH<span class="brand-dot">.</span>ID</span>
+        </a>
+        <div class="nav-links">
+          <a class="nav-link" href="#playground">Playground</a>
+          <a class="nav-link" href="#docs">Docs</a>
+          <a class="nav-link" href="#faqs">FAQs</a>
         </div>
-        <span class="status">● static / cached</span>
+        <a class="github-link" href="https://github.com/vanrezky/api-wilayah-indonesia-json" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero page-width" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker">00 / STATIC JSON API</p>
+        <h1 id="hero-title">Data wilayah Indonesia,<br /><span>siap dipakai.</span></h1>
+        <p class="hero-lead">Provinsi, kabupaten/kota, kecamatan, dan desa/kelurahan dalam endpoint JSON yang ringan dan mudah ditebak.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#playground">Buka playground <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#docs">Lihat docs</a>
+        </div>
+        <div class="hero-endpoint">
+          <span class="endpoint-method">GET</span>
+          <code id="hero-url">./api/v1/provinces.json</code>
+          <button class="copy-button" type="button" data-copy="#hero-url">Copy URL</button>
+        </div>
+        <div id="stats" class="stats" aria-live="polite"></div>
       </div>
 
+      <div class="pipeline-card" aria-label="Alur data wilayah dari provinsi hingga desa dan kelurahan">
+        <div class="wash wash-coral" aria-hidden="true"></div>
+        <div class="wash wash-mint" aria-hidden="true"></div>
+        <div class="pipeline-header">
+          <span class="kicker">DATA MAP</span>
+          <span class="pipeline-status"><i aria-hidden="true"></i> live files</span>
+        </div>
+        <div class="pipeline-flow">
+          <div class="pipeline-node">
+            <span class="node-index">01</span>
+            <strong>Provinsi</strong>
+            <code>provinces</code>
+          </div>
+          <span class="pipeline-connector" aria-hidden="true">↓</span>
+          <div class="pipeline-node pipeline-node-hub">
+            <span class="node-index">02 / 03</span>
+            <strong>Parent code</strong>
+            <code>regencies · districts</code>
+          </div>
+          <span class="pipeline-connector" aria-hidden="true">↓</span>
+          <div class="pipeline-node">
+            <span class="node-index">04</span>
+            <strong>Desa / Kelurahan</strong>
+            <code>villages</code>
+          </div>
+        </div>
+        <p class="pipeline-caption">Satu pola relasi. Empat tingkat wilayah. JSON yang bisa langsung dibaca aplikasi.</p>
+      </div>
+    </section>
+
+    <section class="playground-section page-width" id="playground" aria-labelledby="playground-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">01 / PLAYGROUND</p>
+          <h2 id="playground-title">Coba endpoint langsung.</h2>
+        </div>
+        <span class="status-pill"><i aria-hidden="true"></i> static / cached</span>
+      </div>
+      <p class="section-lead">Pilih tingkat wilayah untuk melihat request dan response yang dikirim oleh API.</p>
+
       <div class="selectors">
-        <label>Provinsi<select id="province"><option value="">Pilih provinsi</option></select></label>
-        <label>Kabupaten / Kota<select id="regency" disabled><option value="">Pilih kabupaten/kota</option></select></label>
-        <label>Kecamatan<select id="district" disabled><option value="">Pilih kecamatan</option></select></label>
+        <label for="province">Provinsi
+          <select id="province">
+            <option value="">Pilih provinsi</option>
+          </select>
+        </label>
+        <label for="regency">Kabupaten / Kota
+          <select id="regency" disabled>
+            <option value="">Pilih kabupaten/kota</option>
+          </select>
+        </label>
+        <label for="district">Kecamatan
+          <select id="district" disabled>
+            <option value="">Pilih kecamatan</option>
+          </select>
+        </label>
       </div>
 
       <div class="request-row">
-        <code id="request-url">GET ./api/v1/provinces.json</code>
-        <button data-copy="#request-url">Copy URL</button>
+        <div class="request-path"><span class="endpoint-method">GET</span><code id="request-url">/api/v1/provinces.json</code></div>
+        <button class="button button-ghost copy-button" type="button" data-copy="#request-url">Copy URL</button>
       </div>
-      <pre id="response">Memuat dataset…</pre>
+      <pre id="response" class="response" data-state="loading" aria-live="polite">Memuat dataset…</pre>
     </section>
 
-    <section class="grid">
-      <article>
-        <p class="eyebrow">ENDPOINT</p>
-        <h3>Provinsi</h3>
-        <code>GET /api/v1/provinces.json</code>
-      </article>
-      <article>
-        <p class="eyebrow">ENDPOINT</p>
-        <h3>Kabupaten / Kota</h3>
-        <code>GET /api/v1/regencies/{province_code}.json</code>
-      </article>
-      <article>
-        <p class="eyebrow">ENDPOINT</p>
-        <h3>Kecamatan</h3>
-        <code>GET /api/v1/districts/{regency_code}.json</code>
-      </article>
-      <article>
-        <p class="eyebrow">ENDPOINT</p>
-        <h3>Desa / Kelurahan</h3>
-        <code>GET /api/v1/villages/{district_code}.json</code>
-      </article>
+    <section class="docs-section page-width" id="docs" aria-labelledby="docs-title">
+      <div class="section-heading docs-heading">
+        <div>
+          <p class="kicker">02 / DOCUMENTATION</p>
+          <h2 id="docs-title">Semua endpoint,<br /><span>satu pola.</span></h2>
+        </div>
+        <p class="section-lead">Gunakan <code>code</code> sebagai identifier dan teruskan nilai parent ke endpoint berikutnya.</p>
+      </div>
+
+      <div class="endpoint-list">
+        <details class="endpoint-item" open>
+          <summary>
+            <span class="summary-index">01</span>
+            <span class="summary-title">Provinsi</span>
+            <code>/api/v1/provinces.json</code>
+            <span class="chevron" aria-hidden="true">↓</span>
+          </summary>
+          <div class="endpoint-detail">
+            <p class="detail-copy">Ambil seluruh daftar provinsi dalam dataset publik.</p>
+            <div class="example-column">
+              <div class="example-label">REQUEST</div>
+              <div class="code-line"><code id="docs-provinces-request">GET ./api/v1/provinces.json</code><button class="copy-button" type="button" data-copy="#docs-provinces-request">Copy</button></div>
+            </div>
+            <div class="example-column">
+              <div class="example-label">RESPONSE · DIPERSINGKAT</div>
+              <pre class="code-block"><code>{
+  "data": [{
+    "id": 1,
+    "code": "51",
+    "name": "Bali",
+    "external_codes": { "rajaongkir": "1" }
+  }],
+  "meta": { "count": 38, "api_version": "v1" }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="endpoint-item">
+          <summary>
+            <span class="summary-index">02</span>
+            <span class="summary-title">Kabupaten / Kota</span>
+            <code>/api/v1/regencies/{province_code}.json</code>
+            <span class="chevron" aria-hidden="true">↓</span>
+          </summary>
+          <div class="endpoint-detail">
+            <p class="detail-copy">Masukkan <code>province_code</code> untuk mengambil kabupaten dan kota di dalam provinsi tersebut.</p>
+            <div class="example-column">
+              <div class="example-label">REQUEST</div>
+              <div class="code-line"><code id="docs-regencies-request">GET ./api/v1/regencies/51.json</code><button class="copy-button" type="button" data-copy="#docs-regencies-request">Copy</button></div>
+            </div>
+            <div class="example-column">
+              <div class="example-label">RESPONSE · DIPERSINGKAT</div>
+              <pre class="code-block"><code>{
+  "data": [{
+    "id": 1,
+    "code": "5103",
+    "province_code": "51",
+    "type": "Kabupaten",
+    "name": "Badung"
+  }],
+  "meta": { "count": 9, "parent_code": "51" }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="endpoint-item">
+          <summary>
+            <span class="summary-index">03</span>
+            <span class="summary-title">Kecamatan</span>
+            <code>/api/v1/districts/{regency_code}.json</code>
+            <span class="chevron" aria-hidden="true">↓</span>
+          </summary>
+          <div class="endpoint-detail">
+            <p class="detail-copy">Masukkan <code>regency_code</code> untuk mengambil kecamatan pada kabupaten atau kota.</p>
+            <div class="example-column">
+              <div class="example-label">REQUEST</div>
+              <div class="code-line"><code id="docs-districts-request">GET ./api/v1/districts/5103.json</code><button class="copy-button" type="button" data-copy="#docs-districts-request">Copy</button></div>
+            </div>
+            <div class="example-column">
+              <div class="example-label">RESPONSE · DIPERSINGKAT</div>
+              <pre class="code-block"><code>{
+  "data": [{
+    "id": 1,
+    "code": "5103010",
+    "regency_code": "5103",
+    "name": "Abiansemal"
+  }],
+  "meta": { "count": 6, "parent_code": "5103" }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="endpoint-item">
+          <summary>
+            <span class="summary-index">04</span>
+            <span class="summary-title">Desa / Kelurahan</span>
+            <code>/api/v1/villages/{district_code}.json</code>
+            <span class="chevron" aria-hidden="true">↓</span>
+          </summary>
+          <div class="endpoint-detail">
+            <p class="detail-copy">Masukkan <code>district_code</code> untuk mengambil desa dan kelurahan.</p>
+            <div class="example-column">
+              <div class="example-label">REQUEST</div>
+              <div class="code-line"><code id="docs-villages-request">GET ./api/v1/villages/510303.json</code><button class="copy-button" type="button" data-copy="#docs-villages-request">Copy</button></div>
+            </div>
+            <div class="example-column">
+              <div class="example-label">RESPONSE · DIPERSINGKAT</div>
+              <pre class="code-block"><code>{
+  "data": [{
+    "id": 1,
+    "code": "5103032008",
+    "district_code": "510303",
+    "name": "Abiansemal"
+  }],
+  "meta": { "count": 18, "parent_code": "510303" }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="endpoint-item">
+          <summary>
+            <span class="summary-index">05</span>
+            <span class="summary-title">Metadata</span>
+            <code>/api/v1/meta.json</code>
+            <span class="chevron" aria-hidden="true">↓</span>
+          </summary>
+          <div class="endpoint-detail">
+            <p class="detail-copy">Lihat versi API dan jumlah data pada setiap tingkat wilayah.</p>
+            <div class="example-column">
+              <div class="example-label">REQUEST</div>
+              <div class="code-line"><code id="docs-meta-request">GET ./api/v1/meta.json</code><button class="copy-button" type="button" data-copy="#docs-meta-request">Copy</button></div>
+            </div>
+            <div class="example-column">
+              <div class="example-label">RESPONSE</div>
+              <pre class="code-block"><code>{
+  "api_version": "v1",
+  "counts": {
+    "provinces": 38,
+    "regencies": 488,
+    "districts": 7253,
+    "villages": 87889
+  }
+}</code></pre>
+            </div>
+          </div>
+        </details>
+      </div>
     </section>
 
+    <section class="faq-section page-width" id="faqs" aria-labelledby="faqs-title">
+      <div class="faq-intro">
+        <p class="kicker">03 / FAQs</p>
+        <h2 id="faqs-title">Pertanyaan yang<br /><span>sering muncul.</span></h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Apakah API ini membutuhkan autentikasi?<span class="chevron" aria-hidden="true">↓</span></summary>
+          <div class="faq-answer"><p>Tidak. Dataset tersedia sebagai file JSON statis sehingga dapat diambil langsung oleh aplikasi Anda.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Bagaimana cara menemukan endpoint turunan?<span class="chevron" aria-hidden="true">↓</span></summary>
+          <div class="faq-answer"><p>Gunakan nilai <code>code</code> dari response tingkat sebelumnya sebagai parameter endpoint berikutnya. Playground di atas membantu mencoba alurnya.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Format response seperti apa yang dikembalikan?<span class="chevron" aria-hidden="true">↓</span></summary>
+          <div class="faq-answer"><p>Setiap endpoint mengembalikan object dengan <code>data</code> dan <code>meta</code>. Lihat contoh request dan response pada Docs.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah tersedia dataset flat?<span class="chevron" aria-hidden="true">↓</span></summary>
+          <div class="faq-answer"><p>Ya. Dataset flat tersedia di <code>/api/v1/data/</code> untuk kebutuhan importer atau seeder. Daftar path lengkapnya ada di repository.</p></div>
+        </details>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer page-width">
+    <span>WILAYAH.ID</span>
+    <span>STATIC JSON API · v1</span>
+    <a href="#top">Kembali ke atas ↑</a>
+  </footer>
+
   <script type="module" src="./app.js"></script>
 </body>
 </html>

@@ -13,9 +13,20 @@ async function get(path) {
   return res.json();
 }
 
+function setLoading() {
+  response.dataset.state = 'loading';
+  response.textContent = 'Menyiapkan data…';
+}
+
 function render(data, url) {
-  requestUrl.textContent = `GET ${url.replace('./', '/')}`;
+  requestUrl.textContent = url.replace('./', '/');
+  response.dataset.state = 'ready';
   response.textContent = JSON.stringify(data, null, 2);
+}
+
+function renderError(error) {
+  response.dataset.state = 'error';
+  response.textContent = `Gagal memuat data. ${error.message}`;
 }
 
 function fill(select, items, placeholder) {
@@ -26,6 +37,7 @@ function fill(select, items, placeholder) {
 }
 
 async function loadProvinces() {
+  setLoading();
   try {
     const [meta, data] = await Promise.all([
       get(`${API}/meta.json`),
@@ -37,50 +49,77 @@ async function loadProvinces() {
       .map(([label, value]) => `<span><strong>${value.toLocaleString('id-ID')}</strong>${label}</span>`)
       .join('');
   } catch (error) {
-    response.textContent = `Gagal memuat API: ${error.message}`;
+    renderError(error);
   }
 }
 
-province.addEventListener('change', async () => {
-  regency.disabled = true;
-  district.disabled = true;
+async function loadChildren(child, path, placeholder) {
+  child.disabled = true;
+  setLoading();
+  try {
+    const data = await get(path);
+    fill(child, data.data, placeholder);
+    render(data, path);
+  } catch (error) {
+    renderError(error);
+  }
+}
+
+province.addEventListener('change', () => {
   regency.innerHTML = '<option value="">Pilih kabupaten/kota</option>';
   district.innerHTML = '<option value="">Pilih kecamatan</option>';
+  regency.disabled = true;
+  district.disabled = true;
   if (!province.value) return loadProvinces();
-  const url = `${API}/regencies/${province.value}.json`;
-  const data = await get(url);
-  fill(regency, data.data, 'Pilih kabupaten/kota');
-  render(data, url);
+  loadChildren(regency, `${API}/regencies/${province.value}.json`, 'Pilih kabupaten/kota');
 });
 
-regency.addEventListener('change', async () => {
-  district.disabled = true;
+regency.addEventListener('change', () => {
   district.innerHTML = '<option value="">Pilih kecamatan</option>';
+  district.disabled = true;
   if (!regency.value) return;
-  const url = `${API}/districts/${regency.value}.json`;
-  const data = await get(url);
-  fill(district, data.data, 'Pilih kecamatan');
-  render(data, url);
+  loadChildren(district, `${API}/districts/${regency.value}.json`, 'Pilih kecamatan');
 });
 
 district.addEventListener('change', async () => {
   if (!district.value) return;
   const url = `${API}/villages/${district.value}.json`;
+  setLoading();
   try {
     render(await get(url), url);
   } catch (error) {
-    render({ data: [], meta: { count: 0, api_version: 'v1', parent_code: district.value }, note: 'Belum ada sample villages pada repository.' }, url);
+    render({
+      data: [],
+      meta: { count: 0, api_version: 'v1', parent_code: district.value },
+      note: 'Belum ada sample villages pada repository.',
+    }, url);
   }
 });
 
-document.addEventListener('click', async event => {
-  const button = event.target.closest('[data-copy]');
-  if (!button) return;
+async function copyText(button) {
   const text = $(button.dataset.copy).textContent.replace(/^GET\s+/, '');
-  await navigator.clipboard.writeText(text);
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const fallback = document.createElement('textarea');
+    fallback.value = text;
+    document.body.append(fallback);
+    fallback.select();
+    document.execCommand('copy');
+    fallback.remove();
+  }
   const original = button.textContent;
   button.textContent = 'Copied';
-  setTimeout(() => button.textContent = original, 1200);
+  window.setTimeout(() => { button.textContent = original; }, 1200);
+}
+
+document.addEventListener('click', event => {
+  const button = event.target.closest('[data-copy]');
+  if (button) copyText(button);
+});
+
+$('[data-dismiss-announcement]').addEventListener('click', event => {
+  event.currentTarget.closest('.announcement').remove();
 });
 
 loadProvinces();
