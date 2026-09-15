@@ -92,8 +92,9 @@ const raw = Object.fromEntries(
 
 for (const [label, items] of Object.entries(raw)) {
   assert(Array.isArray(items), `${sourceFiles[label]} must contain a JSON array`);
-  indexBy(items, 'id', label);
-  assertUniqueCodes(items, label);
+  raw[label] = items.filter(item => asCode(item.apicoid_code) !== null);
+  indexBy(raw[label], 'id', label);
+  assertUniqueCodes(raw[label], label);
 }
 
 const provinceById = indexBy(raw.provinces, 'id', 'provinces');
