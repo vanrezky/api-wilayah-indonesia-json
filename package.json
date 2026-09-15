@@ -1,0 +1,14 @@
+{
+  "name": "api-wilayah-indonesia-json",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate": "node scripts/build.mjs --validate-only",
+    "serve": "npx serve public"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

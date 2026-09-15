@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="API Wilayah Indonesia berbasis JSON statis untuk provinsi, kabupaten/kota, kecamatan, dan desa/kelurahan." />
+  <title>API Wilayah Indonesia</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <nav class="nav">
+      <a class="brand" href="./">WILAYAH.ID</a>
+      <a href="https://github.com/vanrezky/api-wilayah-indonesia-json">GitHub ↗</a>
+    </nav>
+
+    <section class="hero">
+      <p class="eyebrow">STATIC JSON API · NO AUTH · NO DATABASE</p>
+      <h1>Data wilayah Indonesia,<br /><span>tanpa seed ulang.</span></h1>
+      <p class="lead">Provinsi, kabupaten/kota, kecamatan, dan desa/kelurahan yang bisa langsung dikonsumsi dari aplikasi Anda.</p>
+      <div class="curl"><code id="hero-url">GET ./api/v1/provinces.json</code><button data-copy="#hero-url">Copy</button></div>
+      <div id="stats" class="stats" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" id="playground">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">API PLAYGROUND</p>
+          <h2>Coba endpoint langsung</h2>
+        </div>
+        <span class="status">● static / cached</span>
+      </div>
+
+      <div class="selectors">
+        <label>Provinsi<select id="province"><option value="">Pilih provinsi</option></select></label>
+        <label>Kabupaten / Kota<select id="regency" disabled><option value="">Pilih kabupaten/kota</option></select></label>
+        <label>Kecamatan<select id="district" disabled><option value="">Pilih kecamatan</option></select></label>
+      </div>
+
+      <div class="request-row">
+        <code id="request-url">GET ./api/v1/provinces.json</code>
+        <button data-copy="#request-url">Copy URL</button>
+      </div>
+      <pre id="response">Memuat dataset…</pre>
+    </section>
+
+    <section class="grid">
+      <article>
+        <p class="eyebrow">ENDPOINT</p>
+        <h3>Provinsi</h3>
+        <code>GET /api/v1/provinces.json</code>
+      </article>
+      <article>
+        <p class="eyebrow">ENDPOINT</p>
+        <h3>Kabupaten / Kota</h3>
+        <code>GET /api/v1/regencies/{province_code}.json</code>
+      </article>
+      <article>
+        <p class="eyebrow">ENDPOINT</p>
+        <h3>Kecamatan</h3>
+        <code>GET /api/v1/districts/{regency_code}.json</code>
+      </article>
+      <article>
+        <p class="eyebrow">ENDPOINT</p>
+        <h3>Desa / Kelurahan</h3>
+        <code>GET /api/v1/villages/{district_code}.json</code>
+      </article>
+    </section>
+
+    <section class="note">
+      <p><strong>Catatan dataset.</strong> Data berasal dari export database dan dinormalisasi saat build. Field <code>apicoid_code</code> dipublikasikan sebagai <code>code</code>; nilai placeholder seperti kode pos <code>"0"</code> menjadi <code>null</code>. Dataset dapat tertinggal dari perubahan administratif terbaru.</p>
+    </section>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "code": "510303",
+      "regency_code": "5103",
+      "name": "Abiansemal",
+      "postal_code": null,
+      "external_codes": {
+        "rajaongkir": "258"
+      }
+    },
+    {
+      "id": 2,
+      "code": "510301",
+      "regency_code": "5103",
+      "name": "Kuta",
+      "postal_code": null,
+      "external_codes": {
+        "rajaongkir": "259"
+      }
+    }
+  ],
+  "meta": {
+    "count": 2,
+    "api_version": "v1",
+    "parent_code": "5103"
+  }
+}

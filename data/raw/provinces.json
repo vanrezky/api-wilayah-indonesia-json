@@ -1,0 +1,362 @@
+[
+    {
+        "id": 1,
+        "country_id": 1,
+        "name": "Bali",
+        "rajaongkir": "1",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:01:22.000000Z",
+        "apicoid_code": "51"
+    },
+    {
+        "id": 2,
+        "country_id": 1,
+        "name": "Bangka Belitung",
+        "rajaongkir": "2",
+        "created_at": null,
+        "updated_at": null,
+        "apicoid_code": null
+    },
+    {
+        "id": 3,
+        "country_id": 1,
+        "name": "Banten",
+        "rajaongkir": "3",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:01:49.000000Z",
+        "apicoid_code": "36"
+    },
+    {
+        "id": 4,
+        "country_id": 1,
+        "name": "Bengkulu",
+        "rajaongkir": "4",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:02:54.000000Z",
+        "apicoid_code": "17"
+    },
+    {
+        "id": 5,
+        "country_id": 1,
+        "name": "DI Yogyakarta",
+        "rajaongkir": "5",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:03:45.000000Z",
+        "apicoid_code": "34"
+    },
+    {
+        "id": 6,
+        "country_id": 1,
+        "name": "DKI Jakarta",
+        "rajaongkir": "6",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:04:16.000000Z",
+        "apicoid_code": "31"
+    },
+    {
+        "id": 7,
+        "country_id": 1,
+        "name": "Gorontalo",
+        "rajaongkir": "7",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:04:37.000000Z",
+        "apicoid_code": "75"
+    },
+    {
+        "id": 8,
+        "country_id": 1,
+        "name": "Jambi",
+        "rajaongkir": "8",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:05:07.000000Z",
+        "apicoid_code": "15"
+    },
+    {
+        "id": 9,
+        "country_id": 1,
+        "name": "Jawa Barat",
+        "rajaongkir": "9",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:06:00.000000Z",
+        "apicoid_code": "32"
+    },
+    {
+        "id": 10,
+        "country_id": 1,
+        "name": "Jawa Tengah",
+        "rajaongkir": "10",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:09:50.000000Z",
+        "apicoid_code": "33"
+    },
+    {
+        "id": 11,
+        "country_id": 1,
+        "name": "Jawa Timur",
+        "rajaongkir": "11",
+        "created_at": null,
+        "updated_at": "2026-05-13T07:13:20.000000Z",
+        "apicoid_code": "35"
+    },
+    {
+        "id": 12,
+        "country_id": 1,
+        "name": "Kalimantan Barat",
+        "rajaongkir": "12",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:28:36.000000Z",
+        "apicoid_code": "61"
+    },
+    {
+        "id": 13,
+        "country_id": 1,
+        "name": "Kalimantan Selatan",
+        "rajaongkir": "13",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:29:52.000000Z",
+        "apicoid_code": "63"
+    },
+    {
+        "id": 14,
+        "country_id": 1,
+        "name": "Kalimantan Tengah",
+        "rajaongkir": "14",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:31:10.000000Z",
+        "apicoid_code": "62"
+    },
+    {
+        "id": 15,
+        "country_id": 1,
+        "name": "Kalimantan Timur",
+        "rajaongkir": "15",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:32:12.000000Z",
+        "apicoid_code": "64"
+    },
+    {
+        "id": 16,
+        "country_id": 1,
+        "name": "Kalimantan Utara",
+        "rajaongkir": "16",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:32:56.000000Z",
+        "apicoid_code": "65"
+    },
+    {
+        "id": 17,
+        "country_id": 1,
+        "name": "Kepulauan Riau",
+        "rajaongkir": "17",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:33:44.000000Z",
+        "apicoid_code": "21"
+    },
+    {
+        "id": 18,
+        "country_id": 1,
+        "name": "Lampung",
+        "rajaongkir": "18",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:34:22.000000Z",
+        "apicoid_code": "18"
+    },
+    {
+        "id": 19,
+        "country_id": 1,
+        "name": "Maluku",
+        "rajaongkir": "19",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:35:54.000000Z",
+        "apicoid_code": "81"
+    },
+    {
+        "id": 20,
+        "country_id": 1,
+        "name": "Maluku Utara",
+        "rajaongkir": "20",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:36:46.000000Z",
+        "apicoid_code": "82"
+    },
+    {
+        "id": 21,
+        "country_id": 1,
+        "name": "Nanggroe Aceh Darussalam (NAD)",
+        "rajaongkir": "21",
+        "created_at": null,
+        "updated_at": null,
+        "apicoid_code": null
+    },
+    {
+        "id": 22,
+        "country_id": 1,
+        "name": "Nusa Tenggara Barat (NTB)",
+        "rajaongkir": "22",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:37:36.000000Z",
+        "apicoid_code": "52"
+    },
+    {
+        "id": 23,
+        "country_id": 1,
+        "name": "Nusa Tenggara Timur (NTT)",
+        "rajaongkir": "23",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:38:28.000000Z",
+        "apicoid_code": "53"
+    },
+    {
+        "id": 24,
+        "country_id": 1,
+        "name": "Papua",
+        "rajaongkir": "24",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:40:48.000000Z",
+        "apicoid_code": "91"
+    },
+    {
+        "id": 25,
+        "country_id": 1,
+        "name": "Papua Barat",
+        "rajaongkir": "25",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:41:40.000000Z",
+        "apicoid_code": "92"
+    },
+    {
+        "id": 26,
+        "country_id": 1,
+        "name": "Riau",
+        "rajaongkir": "26",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:46:23.000000Z",
+        "apicoid_code": "14"
+    },
+    {
+        "id": 27,
+        "country_id": 1,
+        "name": "Sulawesi Barat",
+        "rajaongkir": "27",
+        "created_at": null,
+        "updated_at": "2026-06-12T07:29:41.000000Z",
+        "apicoid_code": "76"
+    },
+    {
+        "id": 28,
+        "country_id": 1,
+        "name": "Sulawesi Selatan",
+        "rajaongkir": "28",
+        "created_at": null,
+        "updated_at": "2026-06-12T07:30:12.000000Z",
+        "apicoid_code": "73"
+    },
+    {
+        "id": 29,
+        "country_id": 1,
+        "name": "Sulawesi Tengah",
+        "rajaongkir": "29",
+        "created_at": null,
+        "updated_at": "2026-06-12T07:32:16.000000Z",
+        "apicoid_code": "72"
+    },
+    {
+        "id": 30,
+        "country_id": 1,
+        "name": "Sulawesi Tenggara",
+        "rajaongkir": "30",
+        "created_at": null,
+        "updated_at": "2026-06-12T07:33:27.000000Z",
+        "apicoid_code": "74"
+    },
+    {
+        "id": 31,
+        "country_id": 1,
+        "name": "Sulawesi Utara",
+        "rajaongkir": "31",
+        "created_at": null,
+        "updated_at": "2026-06-12T07:35:16.000000Z",
+        "apicoid_code": "71"
+    },
+    {
+        "id": 32,
+        "country_id": 1,
+        "name": "Sumatera Barat",
+        "rajaongkir": "32",
+        "created_at": null,
+        "updated_at": "2026-06-12T07:35:57.000000Z",
+        "apicoid_code": "13"
+    },
+    {
+        "id": 33,
+        "country_id": 1,
+        "name": "Sumatera Selatan",
+        "rajaongkir": "33",
+        "created_at": null,
+        "updated_at": "2026-06-12T07:37:23.000000Z",
+        "apicoid_code": "16"
+    },
+    {
+        "id": 34,
+        "country_id": 1,
+        "name": "Sumatera Utara",
+        "rajaongkir": "34",
+        "created_at": null,
+        "updated_at": "2026-06-12T07:38:56.000000Z",
+        "apicoid_code": "12"
+    },
+    {
+        "id": 35,
+        "country_id": 1,
+        "name": "Papua Selatan",
+        "rajaongkir": "",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:44:53.000000Z",
+        "apicoid_code": "93"
+    },
+    {
+        "id": 36,
+        "country_id": 1,
+        "name": "Papua Tengah",
+        "rajaongkir": "",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:45:26.000000Z",
+        "apicoid_code": "94"
+    },
+    {
+        "id": 37,
+        "country_id": 1,
+        "name": "Papua Pegunungan",
+        "rajaongkir": "",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:43:08.000000Z",
+        "apicoid_code": "95"
+    },
+    {
+        "id": 38,
+        "country_id": 1,
+        "name": "Papua Barat Daya",
+        "rajaongkir": "",
+        "created_at": null,
+        "updated_at": "2026-05-13T22:42:16.000000Z",
+        "apicoid_code": "96"
+    },
+    {
+        "id": 39,
+        "country_id": 1,
+        "name": "ACEH (NAD)",
+        "rajaongkir": "0",
+        "created_at": "2026-05-13T06:58:48.000000Z",
+        "updated_at": "2026-05-13T06:58:48.000000Z",
+        "apicoid_code": "11"
+    },
+    {
+        "id": 40,
+        "country_id": 1,
+        "name": "KEPULAUAN BANGKA BELITUNG",
+        "rajaongkir": "0",
+        "created_at": "2026-05-13T22:33:22.000000Z",
+        "updated_at": "2026-05-13T22:33:22.000000Z",
+        "apicoid_code": "19"
+    }
+]
